@@ -1,0 +1,456 @@
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px 160px;
+  position: relative;
+  z-index: 10;
+  background-color: var(--bg-primary);
+  position: sticky;
+  top: 0;
+  box-shadow: 0 10px 33px var(--shadow-light);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logoLinkContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoContainer a {
+  text-decoration: none;
+}
+
+.logoContainer a:hover {
+  text-decoration: none;
+}
+
+.logoContainer span {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
+
+.linkContainer ul {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.linkContainer ul li {
+  list-style-type: none;
+}
+
+.linkContainer ul li a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.linkContainer ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease-out;
+}
+
+.linkContainer ul li a:hover::after {
+  width: 60%;
+  transition-delay: 0.1s;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.iconContainer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+@media screen and (max-width: 1210px) {
+  .navBar {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    position: relative;
+    z-index: 10;
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .mobile-nav {
+    padding: 20px 15px;
+  }
+}
+
+/* Mobile Menu */
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  position: absolute;
+  top: 74px;
+  right: 0;
+  width: 100%;
+  box-shadow: 0 2px 10px var(--shadow-light);
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out, background-color 0.3s ease;
+  z-index: 9;
+  border-top: 1px solid var(--border-color);
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  overflow: hidden;
+}
+
+.mobile-menuSearchBar {
+  padding: 20px;
+}
+
+.mobile-menuSearchBarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+}
+
+.mobile-menuSearchBarContainer input {
+  border: none;
+  width: 100%;
+  font-size: 14px;
+  outline: none;
+}
+
+.mobile-menuSearchBarContainer a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-menuList ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.mobile-menuList ul li {
+  padding: 10px 20px;
+}
+
+.mobile-menuList ul li a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.mobile-menuFooter {
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.mobile-menuFooterLogin a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.mobile-menuFooterLogin p {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.mobile-menuFooterLangCurrency {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.footerLangCurrency {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.mobile-menuFooterLang {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.mobile-menuFooterLang select {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 14px;
+}
+
+.mobile-menuFooterCurrency {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.mobile-menuFooterCurrency select {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 14px;
+}
+
+.mobile-menuSocial_links {
+  display: flex;
+  gap: 30px;
+  width: 240px;
+  margin-bottom: 20px;
+}
+
+.mobile-menuSocial_links svg {
+  cursor: pointer;
+}
+
+/* Search Modal Styles */
+.search-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1000;
+  padding-top: 100px;
+}
+
+.search-modal {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  box-shadow: 0 20px 40px var(--shadow-medium);
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow: hidden;
+  animation: modalSlideIn 0.3s ease-out;
+  transition: background-color 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.search-modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
+
+.search-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.search-close-btn:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.search-modal-form {
+  padding: 24px;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.search-input-container:focus-within {
+  border-color: var(--accent-color);
+}
+
+.search-modal-input {
+  flex: 1;
+  padding: 16px 20px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.search-modal-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-submit-btn {
+  background-color: var(--accent-color);
+  border: none;
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.search-submit-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.search-suggestions {
+  padding: 0 24px 24px;
+}
+
+.search-suggestions p {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.suggestion-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.suggestion-tags span {
+  background-color: var(--accent-light);
+  color: var(--accent-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.suggestion-tags span:hover {
+  background-color: var(--accent-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+/* Mobile responsive for search modal */
+@media screen and (max-width: 768px) {
+  .search-modal-overlay {
+    padding-top: 50px;
+  }
+  
+  .search-modal {
+    width: 95%;
+    margin: 0 10px;
+  }
+  
+  .search-modal-header {
+    padding: 16px 20px;
+  }
+  
+  .search-modal-form {
+    padding: 20px;
+  }
+  
+  .search-suggestions {
+    padding: 0 20px 20px;
+  }
+  
+  .suggestion-tags {
+    gap: 8px;
+  }
+  
+  .suggestion-tags span {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}

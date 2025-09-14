@@ -1,0 +1,35 @@
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+}
+
+.dark-mode-toggle:hover {
+  background-color: var(--bg-secondary);
+  transform: scale(1.1);
+}
+
+.dark-mode-toggle:active {
+  transform: scale(0.95);
+}
+
+.dark-mode-toggle:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Dark mode styles */
+.dark .dark-mode-toggle {
+  color: var(--text-primary);
+}
+
+.dark .dark-mode-toggle:hover {
+  background-color: var(--bg-secondary);
+}

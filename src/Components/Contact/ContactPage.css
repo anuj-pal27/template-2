@@ -1,0 +1,152 @@
+.contactSection {
+  background-color: var(--bg-secondary);
+  background-image: url("../../Assets/slideshow-pattern.png");
+  background-size: cover;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+.contactSection h2 {
+  font-size: 35px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 30px;
+  padding-left: 250px;
+  color: var(--accent-color);
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.contactSection h2::before {
+  content: "";
+  display: block;
+  width: 35px;
+  height: 2px;
+  background-color: var(--accent-color);
+  position: absolute;
+  left: 180px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.3s ease;
+}
+
+.contactMap iframe {
+  width: 100%;
+  border: none;
+  background-color: var(--border-color);
+  transition: background-color 0.3s ease;
+}
+
+.contactInfo {
+  padding: 0 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.contactAddress {
+  display: flex;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 50px;
+  width: 50%;
+}
+
+.address h3 {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.address p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.contactForm h3 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.contactForm form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contactForm form input {
+  padding: 15px;
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  outline-color: var(--accent-color);
+  background-color: var(--input-bg);
+  transition: all 0.3s ease;
+}
+
+.contactForm form textarea {
+  font-size: 14px;
+  padding: 15px;
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  outline-color: var(--accent-color);
+  background-color: var(--input-bg);
+  transition: all 0.3s ease;
+}
+
+.contactForm form button {
+  width: 20%;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 20px 5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contactForm form button:hover {
+  background-color: var(--accent-hover);
+}
+
+@media screen and (max-width: 1210px) {
+  .contactSection h2 {
+    padding: 30px 60px;
+  }
+
+  .contactInfo {
+    padding: 0 60px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .contactSection h2 {
+    padding: 30px 15px;
+  }
+
+  .contactInfo {
+    padding: 0 15px;
+  }
+
+  .contactAddress {
+    flex-direction: column;
+  }
+
+  .address {
+    width: 100%;
+  }
+
+  .contactForm form button {
+    width: 50%;
+  }
+}

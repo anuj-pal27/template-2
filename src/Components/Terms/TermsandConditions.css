@@ -1,0 +1,70 @@
+.termsContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 270px;
+  gap: 50px;
+  background-color: var(--bg-secondary);
+  background-image: url("../../Assets/slideshow-pattern.png");
+  background-size: cover;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+.termsContainer h2 {
+  font-size: 35px;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.termsContainer h2::before {
+  content: "";
+  display: block;
+  width: 35px;
+  height: 2px;
+  background-color: var(--accent-color);
+  position: absolute;
+  left: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.3s ease;
+}
+
+.termsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.termsContent h6 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.termsContainer p {
+  font-size: 14px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+@media screen and (max-width: 1210px) {
+  .termsContainer {
+    padding: 30px 60px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .termsContainer {
+    padding: 15px;
+  }
+
+  .termsContainer h2 {
+    font-size: 25px;
+  }
+}
