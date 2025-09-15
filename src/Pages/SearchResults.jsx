@@ -6,6 +6,7 @@ import { FiHeart } from "react-icons/fi";
 import { FaCartPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../Features/Cart/cartSlice";
+import { addToWishList, removeFromWishList } from "../Features/Wishlist/wishListSlice";
 import toast from "react-hot-toast";
 import "./SearchResults.css";
 
@@ -13,10 +14,10 @@ const SearchResults = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
+  const wishlistItems = useSelector((state) => state.wishlist.items);
   
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [wishList, setWishList] = useState({});
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -33,11 +34,43 @@ const SearchResults = () => {
     }
   }, [location.search]);
 
-  const handleWishlistClick = (productID) => {
-    setWishList((prevWishlist) => ({
-      ...prevWishlist,
-      [productID]: !prevWishlist[productID],
-    }));
+  const handleWishlistClick = (product) => {
+    const isInWishlist = wishlistItems.some(item => item.productID === product.productID);
+    
+    if (isInWishlist) {
+      dispatch(removeFromWishList({ id: product.productID }));
+      toast.success("Removed from wishlist!", {
+        duration: 2000,
+        style: {
+          backgroundColor: "#ff4b4b",
+          color: "white",
+        },
+        iconTheme: {
+          primary: "#fff",
+          secondary: "#ff4b4b",
+        },
+      });
+    } else {
+      dispatch(addToWishList({
+        id: product.productID,
+        productID: product.productID,
+        productName: product.productName,
+        productPrice: product.productPrice,
+        frontImg: product.frontImg,
+        productReviews: product.productReviews,
+      }));
+      toast.success("Added to wishlist!", {
+        duration: 2000,
+        style: {
+          backgroundColor: "#07bc0c",
+          color: "white",
+        },
+        iconTheme: {
+          primary: "#fff",
+          secondary: "#07bc0c",
+        },
+      });
+    }
   };
 
   const handleAddToCart = (product) => {
@@ -127,9 +160,9 @@ const SearchResults = () => {
                   <div className="search-product-category-wishlist">
                     <p>Product</p>
                     <FiHeart
-                      onClick={() => handleWishlistClick(product.productID)}
+                      onClick={() => handleWishlistClick(product)}
                       style={{
-                        color: wishList[product.productID] ? "red" : "#767676",
+                        color: wishlistItems.some(item => item.productID === product.productID) ? "red" : "#767676",
                         cursor: "pointer",
                       }}
                     />

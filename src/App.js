@@ -21,6 +21,7 @@ import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import Popup from "./Components/PopupBanner/Popup";
 import SearchResults from "./Pages/SearchResults";
 import OrderTracking from "./Pages/OrderTracking";
+import Wishlist from "./Pages/Wishlist";
 import { Toaster } from "react-hot-toast";
 import { SearchProvider } from "./Context/SearchContext";
 import { FilterProvider } from "./Context/FilterContext";
@@ -46,6 +47,7 @@ const App = () => {
               <Route path="/BlogDetails" element={<BlogDetails />} />
               <Route path="/terms" element={<TermsConditions />} />
               <Route path="/cart" element={<ShoppingCart />} />
+              <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/search" element={<SearchResults />} />
               <Route path="/track-order" element={<OrderTracking />} />
               <Route path="*" element={<NotFound />} />

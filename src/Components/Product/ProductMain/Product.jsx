@@ -4,6 +4,7 @@ import Zoom from "@mui/material/Zoom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../Features/Cart/cartSlice";
+import { addToWishList, removeFromWishList } from "../../../Features/Wishlist/wishListSlice";
 
 import product1 from "../../../Assets/ProductDetail/productdetail-1.jpg";
 import product2 from "../../../Assets/ProductDetail/productdetail-2.jpg";
@@ -59,10 +60,46 @@ const Product = () => {
 
   // Product WishList
 
-  const [clicked, setClicked] = useState(false);
+  const wishlistItems = useSelector((state) => state.wishlist.items);
+  const productDetails = {
+    id: 14,
+    productID: 14,
+    productName: "Lightweight Puffer Jacket",
+    productPrice: 90,
+    frontImg: productImg[0],
+    productReviews: "8k+ reviews",
+  };
+
+  const isInWishlist = wishlistItems.some(item => item.id === productDetails.id);
 
   const handleWishClick = () => {
-    setClicked(!clicked);
+    if (isInWishlist) {
+      dispatch(removeFromWishList(productDetails));
+      toast.success("Removed from wishlist!", {
+        duration: 2000,
+        style: {
+          backgroundColor: "#ff4b4b",
+          color: "white",
+        },
+        iconTheme: {
+          primary: "#fff",
+          secondary: "#ff4b4b",
+        },
+      });
+    } else {
+      dispatch(addToWishList(productDetails));
+      toast.success("Added to wishlist!", {
+        duration: 2000,
+        style: {
+          backgroundColor: "#07bc0c",
+          color: "white",
+        },
+        iconTheme: {
+          primary: "#fff",
+          secondary: "#07bc0c",
+        },
+      });
+    }
   };
 
   // Product Sizes
@@ -90,13 +127,6 @@ const Product = () => {
   const cartItems = useSelector((state) => state.cart.items);
 
   const handleAddToCart = () => {
-    const productDetails = {
-      productID: 14,
-      productName: "Lightweight Puffer Jacket",
-      productPrice: 90,
-      frontImg: productImg[0],
-      productReviews: "8k+ reviews",
-    };
 
     const productInCart = cartItems.find(
       (item) => item.productID === productDetails.productID
@@ -267,8 +297,8 @@ const Product = () => {
             <div className="productWishShare">
               <div className="productWishList">
                 <button onClick={handleWishClick}>
-                  <FiHeart color={clicked ? "red" : ""} size={17} />
-                  <p>Add to Wishlist</p>
+                  <FiHeart color={isInWishlist ? "red" : ""} size={17} />
+                  <p>{isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}</p>
                 </button>
               </div>
               <div className="productShare">

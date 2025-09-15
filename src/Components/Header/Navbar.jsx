@@ -23,6 +23,7 @@ import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
 
 const Navbar = () => {
   const cart = useSelector((state) => state.cart);
+  const wishlist = useSelector((state) => state.wishlist);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
@@ -124,7 +125,18 @@ const Navbar = () => {
               <RiShoppingBagLine size={22} />
             </Badge>
           </Link>
-          <FiHeart size={22} onClick={scrollToTop} />
+          <Link to="/wishlist" onClick={scrollToTop}>
+            <Badge
+              badgeContent={wishlist.items.length === 0 ? "0" : wishlist.items.length}
+              color="primary"
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+            >
+              <FiHeart size={22} />
+            </Badge>
+          </Link>
           {/* <RiMenu2Line size={22} /> */}
         </div>
       </nav>
@@ -192,6 +204,18 @@ const Navbar = () => {
               }}
             >
               <RiShoppingBagLine size={22} color="black" />
+            </Badge>
+          </Link>
+          <Link to="/wishlist">
+            <Badge
+              badgeContent={wishlist.items.length === 0 ? "0" : wishlist.items.length}
+              color="primary"
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+            >
+              <FiHeart size={22} color="black" />
             </Badge>
           </Link>
         </div>

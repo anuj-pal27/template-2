@@ -1,10 +1,18 @@
 .productSection {
   padding: 0 160px;
   margin-top: 30px;
-  background-color: #e9f5ec;
+  background-color: var(--bg-secondary);
   background-image: url("../../../Assets/slideshow-pattern.png");
   background-size: cover;
+  background-blend-mode: overlay;
   min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark mode adjustments for product section background */
+.dark .productSection {
+  background-color: rgba(30, 30, 30, 0.8);
+  background-blend-mode: soft-light;
 }
 
 .productShowCase {
@@ -36,7 +44,8 @@
   width: 520px;
   height: 520px;
   pointer-events: none;
-  background-color: #767676;
+  background-color: var(--text-secondary);
+  transition: background-color 0.3s ease;
 }
 
 .buttonsGroup {
@@ -50,16 +59,17 @@
 }
 
 .directionBtn {
-  background-color: white;
+  background-color: var(--card-bg);
   border: none;
   display: flex;
   border-radius: 50%;
   padding: 13px;
   outline: none;
+  transition: background-color 0.3s ease;
 }
 
 .directionBtn:hover {
-  background-color: rgb(239, 239, 239);
+  background-color: var(--bg-tertiary);
 }
 
 /* Product Details CSS */
@@ -86,11 +96,12 @@
 
 .breadcrumbLink a {
   text-decoration: none;
-  color: black;
+  color: var(--text-primary);
   text-transform: uppercase;
   font-weight: 500;
   font-size: 14px;
   position: relative;
+  transition: color 0.3s ease;
 }
 
 .breadcrumbLink a::after {
@@ -99,8 +110,8 @@
   left: 0;
   bottom: -5px;
   width: 0;
-  border-bottom: 2px solid #2e7d32;
-  transition: width 0.3s ease;
+  border-bottom: 2px solid var(--accent-color);
+  transition: width 0.3s ease, border-color 0.3s ease;
 }
 
 .breadcrumbLink a:hover::after {
@@ -118,11 +129,12 @@
   align-items: center;
   gap: 5px;
   text-decoration: none;
-  color: black;
+  color: var(--text-primary);
   text-transform: uppercase;
   font-weight: 500;
   font-size: 14px;
   position: relative;
+  transition: color 0.3s ease;
 }
 
 .prevNextLink a::after {
@@ -131,8 +143,8 @@
   left: 0;
   bottom: -5px;
   width: 0;
-  border-bottom: 2px solid #2e7d32;
-  transition: width 0.3s ease;
+  border-bottom: 2px solid var(--accent-color);
+  transition: width 0.3s ease, border-color 0.3s ease;
 }
 
 .prevNextLink a:hover::after {
@@ -142,8 +154,9 @@
 .productName h1 {
   font-size: 28px;
   font-weight: 500;
-  color: black;
+  color: var(--text-primary);
   line-height: 35px;
+  transition: color 0.3s ease;
 }
 
 .productRating {
@@ -154,20 +167,25 @@
 
 .productRating p {
   font-size: 14px;
-  color: #5f5e5e;
+  color: var(--text-secondary);
   margin-left: 10px;
+  transition: color 0.3s ease;
 }
 
 .productPrice h3 {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 20px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .productDescription p {
   font-size: 15px;
   line-height: 25px;
   margin-bottom: 20px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .productSizeColor {
@@ -185,9 +203,10 @@
 
 .productSize p {
   font-size: 14px;
-  color: black;
+  color: var(--text-primary);
   font-weight: 500;
   text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 .sizeBtn {
@@ -196,12 +215,18 @@
 }
 
 .sizeBtn button {
-  background-color: white;
-  border: 1px solid;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
   padding: 5px 15px;
   cursor: pointer;
   transition: all 0.3s ease;
   outline: none;
+}
+
+.sizeBtn button:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--accent-color);
 }
 
 .productColor {
@@ -216,7 +241,8 @@
 }
 
 .colorBtn button {
-  background-color: white;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 50%;
   padding: 8px;
   cursor: pointer;
@@ -229,7 +255,7 @@
   content: "";
   position: absolute;
   box-sizing: border-box;
-  border: 2px solid rgb(0, 0, 0);
+  border: 2px solid var(--text-primary);
   border-radius: 50%;
   width: calc(100% + 12px);
   height: calc(100% + 12px);
@@ -239,9 +265,10 @@
 
 .productColor p {
   font-size: 14px;
-  color: black;
+  color: var(--text-primary);
   font-weight: 500;
   text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 .productCartQuantity {
@@ -253,16 +280,23 @@
 
 .productQuantity {
   display: flex;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--border-color);
   padding: 0 10px;
+  transition: border-color 0.3s ease;
 }
 
 .productQuantity button {
-  background-color: white;
+  background-color: var(--card-bg);
   border: none;
+  color: var(--text-primary);
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.productQuantity button:hover {
+  background-color: var(--bg-tertiary);
 }
 
 .productQuantity input {
@@ -271,11 +305,14 @@
   text-align: center;
   border: none;
   outline: none;
+  background-color: transparent;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .productCartBtn button {
   padding: 20px 110px;
-  background-color: #2e7d32;
+  background-color: var(--accent-color);
   color: white;
   font-weight: 600;
   text-transform: uppercase;
@@ -286,7 +323,7 @@
 }
 
 .productCartBtn button:hover {
-  background-color: #1b5e20;
+  background-color: var(--accent-hover);
 }
 
 .productWishShare {
@@ -298,11 +335,13 @@
 .productWishList button {
   display: flex;
   align-items: center;
-  background-color: white;
+  background-color: transparent;
   border: none;
   gap: 10px;
   outline: none;
   position: relative;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .productWishList button::after {
@@ -311,8 +350,8 @@
   left: 0;
   bottom: -10px;
   width: 0;
-  border-bottom: 2px solid black;
-  transition: width 0.3s ease;
+  border-bottom: 2px solid var(--text-primary);
+  transition: width 0.3s ease, border-color 0.3s ease;
 }
 
 .productWishList button:hover::after {
@@ -322,6 +361,8 @@
 .productWishList button p {
   text-transform: uppercase;
   font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .productShare {
@@ -332,6 +373,8 @@
   font-size: 13px;
   font-weight: 500;
   position: relative;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .productShare::after {
@@ -340,8 +383,8 @@
   left: 0;
   bottom: -10px;
   width: 0;
-  border-bottom: 2px solid black;
-  transition: width 0.3s ease;
+  border-bottom: 2px solid var(--text-primary);
+  transition: width 0.3s ease, border-color 0.3s ease;
 }
 
 .productShare:hover::after {
@@ -356,12 +399,14 @@
 
 .productTags p {
   font-size: 13px;
-  color: black;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .productTags span {
   font-size: 13px;
-  color: #767676;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 /* Responsive CSS */

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./RelatedProducts.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addToWishList, removeFromWishList } from "../../../Features/Wishlist/wishListSlice";
+import toast from "react-hot-toast";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -14,13 +17,46 @@ import { FaStar } from "react-icons/fa";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const RelatedProducts = () => {
-  const [wishList, setWishList] = useState({});
+  const dispatch = useDispatch();
+  const wishlistItems = useSelector((state) => state.wishlist.items);
 
-  const handleWishlistClick = (productID) => {
-    setWishList((prevWishlist) => ({
-      ...prevWishlist,
-      [productID]: !prevWishlist[productID],
-    }));
+  const handleWishlistClick = (product) => {
+    const isInWishlist = wishlistItems.some(item => item.productID === product.productID);
+    
+    if (isInWishlist) {
+      dispatch(removeFromWishList({ id: product.productID }));
+      toast.success("Removed from wishlist!", {
+        duration: 2000,
+        style: {
+          backgroundColor: "#ff4b4b",
+          color: "white",
+        },
+        iconTheme: {
+          primary: "#fff",
+          secondary: "#ff4b4b",
+        },
+      });
+    } else {
+      dispatch(addToWishList({
+        id: product.productID,
+        productID: product.productID,
+        productName: product.productName,
+        productPrice: product.productPrice,
+        frontImg: product.frontImg,
+        productReviews: product.productReviews,
+      }));
+      toast.success("Added to wishlist!", {
+        duration: 2000,
+        style: {
+          backgroundColor: "#07bc0c",
+          color: "white",
+        },
+        iconTheme: {
+          primary: "#fff",
+          secondary: "#07bc0c",
+        },
+      });
+    }
   };
 
   const scrollToTop = () => {
@@ -95,9 +131,9 @@ const RelatedProducts = () => {
                       <div className="rpCategoryWishlist">
                         <p>Dresses</p>
                         <FiHeart
-                          onClick={() => handleWishlistClick(product.productID)}
+                          onClick={() => handleWishlistClick(product)}
                           style={{
-                            color: wishList[product.productID]
+                            color: wishlistItems.some(item => item.productID === product.productID)
                               ? "red"
                               : "#767676",
                             cursor: "pointer",
