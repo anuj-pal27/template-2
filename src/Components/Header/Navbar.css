@@ -111,6 +111,13 @@
     background-color: var(--bg-primary);
     transition: background-color 0.3s ease;
   }
+
+  .mobile-nav .logoContainer .logo-link span,
+  .mobile-nav a,
+  .mobile-nav svg {
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -190,6 +197,12 @@
   font-size: 16px;
   font-weight: 600;
   transition: color 0.3s ease;
+}
+
+.mobile-menuTop,
+.mobile-menuFooter {
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease;
 }
 
 .mobile-menuFooter {

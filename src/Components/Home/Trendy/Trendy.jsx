@@ -149,9 +149,9 @@ const Trendy = () => {
             {activeTab === "tab1" && (
               <div className="trendyMainContainer">
                 {StoreData.slice(0, 8).map((product) => (
-                  <div className="trendyProductContainer" key={product.id}>
+                  <div className="trendyProductContainer" key={product.productID}>
                     <div className="trendyProductImages">
-                      <Link to="/Product" onClick={scrollToTop}>
+                      <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                         <img
                           src={product.frontImg}
                           alt=""
@@ -187,7 +187,7 @@ const Trendy = () => {
                         />
                       </div>
                       <div className="trendyProductNameInfo">
-                        <Link to="product" onClick={scrollToTop}>
+                        <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                           <h5>{product.productName}</h5>
                         </Link>
 
@@ -215,9 +215,9 @@ const Trendy = () => {
                 {StoreData.slice(0, 8)
                   .reverse()
                   .map((product) => (
-                    <div className="trendyProductContainer" key={product.id}>
+                    <div className="trendyProductContainer" key={product.productID}>
                       <div className="trendyProductImages">
-                        <Link to="/Product" onClick={scrollToTop}>
+                        <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                           <img
                             src={product.frontImg}
                             alt=""
@@ -255,7 +255,7 @@ const Trendy = () => {
                           />
                         </div>
                         <div className="trendyProductNameInfo">
-                          <Link to="product" onClick={scrollToTop}>
+                          <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                             <h5>{product.productName}</h5>
                           </Link>
 
@@ -283,9 +283,9 @@ const Trendy = () => {
                 {StoreData.slice(0, 8)
                   .sort(sortByReviews)
                   .map((product) => (
-                    <div className="trendyProductContainer" key={product.id}>
+                    <div className="trendyProductContainer" key={product.productID}>
                       <div className="trendyProductImages">
-                        <Link to="/Product" onClick={scrollToTop}>
+                        <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                           <img
                             src={product.frontImg}
                             alt=""
@@ -323,7 +323,7 @@ const Trendy = () => {
                           />
                         </div>
                         <div className="trendyProductNameInfo">
-                          <Link to="product" onClick={scrollToTop}>
+                          <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                             <h5>{product.productName}</h5>
                           </Link>
 
@@ -351,9 +351,9 @@ const Trendy = () => {
                 {StoreData.slice(0, 8)
                   .sort(sortByPrice)
                   .map((product) => (
-                    <div className="trendyProductContainer" key={product.id}>
+                    <div className="trendyProductContainer" key={product.productID}>
                       <div className="trendyProductImages">
-                        <Link to="/Product">
+                        <Link to={`/product/${product.productID}`}>
                           <img
                             src={product.frontImg}
                             alt=""
@@ -391,7 +391,7 @@ const Trendy = () => {
                           />
                         </div>
                         <div className="trendyProductNameInfo">
-                          <Link to="/product" onClick={scrollToTop}>
+                          <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                             <h5>{product.productName}</h5>
                           </Link>
 

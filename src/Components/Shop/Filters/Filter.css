@@ -66,6 +66,7 @@
   padding: 0 20px;
   position: relative;
   transition: color 0.3s ease;
+  margin-bottom: 10px; /* add spacing below headings like Colors and Sizes */
 }
 
 .filterHeading::after {
@@ -82,9 +83,9 @@
 
 .filterCategories p {
   font-size: 14px;
-  padding: 8px 20px;
+  padding: 8px 20px 8px 40px; /* leave space for the arrow */
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
   margin: 0;
   border-radius: 4px;
   position: relative;
@@ -94,7 +95,6 @@
 .filterCategories p:hover {
   color: var(--accent-color);
   background-color: var(--accent-light);
-  padding-left: 30px;
 }
 
 .filterCategories p::before {
@@ -116,6 +116,7 @@
   flex-wrap: wrap;
   gap: 15px;
   padding: 0 20px;
+  margin-top: 5px;
 }
 
 .filterColorBtn button {
@@ -154,6 +155,7 @@
   flex-wrap: wrap;
   gap: 10px;
   padding: 0 20px;
+  margin-top: 5px;
 }
 
 .sizeButton {

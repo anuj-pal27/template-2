@@ -111,6 +111,14 @@
   grid-gap: 30px;
 }
 
+.noProducts {
+  padding: 40px;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
 .sdProductContainer {
   position: relative;
 }

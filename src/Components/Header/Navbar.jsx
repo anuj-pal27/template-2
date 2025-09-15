@@ -203,7 +203,7 @@ const Navbar = () => {
                 horizontal: "right",
               }}
             >
-              <RiShoppingBagLine size={22} color="black" />
+              <RiShoppingBagLine size={22} />
             </Badge>
           </Link>
           <Link to="/wishlist">
@@ -215,7 +215,7 @@ const Navbar = () => {
                 horizontal: "right",
               }}
             >
-              <FiHeart size={22} color="black" />
+              <FiHeart size={22} />
             </Badge>
           </Link>
         </div>

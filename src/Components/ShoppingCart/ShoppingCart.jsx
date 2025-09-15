@@ -144,14 +144,14 @@ const ShoppingCart = () => {
                           <tr key={item.productID}>
                             <td data-label="Product">
                               <div className="shoppingBagTableImg">
-                                <Link to="/product" onClick={scrollToTop}>
+                                <Link to={`/product/${item.productID}`} onClick={scrollToTop}>
                                   <img src={item.frontImg} alt="" />
                                 </Link>
                               </div>
                             </td>
                             <td data-label="">
                               <div className="shoppingBagTableProductDetail">
-                                <Link to="/product" onClick={scrollToTop}>
+                                <Link to={`/product/${item.productID}`} onClick={scrollToTop}>
                                   <h4>{item.productName}</h4>
                                 </Link>
                                 <p>{item.productReviews}</p>
@@ -278,13 +278,13 @@ const ShoppingCart = () => {
                           <div key={item.productID}>
                             <div className="shoppingBagTableMobileItems">
                               <div className="shoppingBagTableMobileItemsImg">
-                                <Link to="/product" onClick={scrollToTop}>
+                                <Link to={`/product/${item.productID}`} onClick={scrollToTop}>
                                   <img src={item.frontImg} alt="" />
                                 </Link>
                               </div>
                               <div className="shoppingBagTableMobileItemsDetail">
                                 <div className="shoppingBagTableMobileItemsDetailMain">
-                                  <Link to="/product" onClick={scrollToTop}>
+                                  <Link to={`/product/${item.productID}`} onClick={scrollToTop}>
                                     <h4>{item.productName}</h4>
                                   </Link>
                                   <p>{item.productReviews}</p>

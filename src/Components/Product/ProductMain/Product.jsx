@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import Zoom from "@mui/material/Zoom";
 
@@ -17,24 +17,46 @@ import { FaStar } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
 import { PiShareNetworkLight } from "react-icons/pi";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import toast from "react-hot-toast";
 
 import "./Product.css";
+import StoreData from "../../../Data/StoreData";
 
 const Product = () => {
-  // Product images Gallery
+  const { id } = useParams();
+  const navigate = useNavigate();
+  // Resolve product from route param first
+  const productId = parseInt(id, 10);
+  const productFromStore = useMemo(
+    () => StoreData.find((p) => p.productID === productId) || StoreData[0],
+    [productId]
+  );
+  const productDetails = {
+    id: productFromStore.productID,
+    productID: productFromStore.productID,
+    productName: productFromStore.productName,
+    productPrice: productFromStore.productPrice,
+    frontImg: productFromStore.frontImg,
+    productReviews: productFromStore.productReviews,
+  };
 
-  const productImg = [product1, product2, product3, product4];
+  // Product images Gallery - dynamic from StoreData with fallback
+  const dynamicImages = useMemo(() => {
+    const imgs = [];
+    if (productFromStore?.frontImg) imgs.push(productFromStore.frontImg);
+    if (productFromStore?.backImg) imgs.push(productFromStore.backImg);
+    return imgs.length > 0 ? imgs : [product1, product2, product3, product4];
+  }, [productFromStore]);
   const [currentImg, setCurrentImg] = useState(0);
 
   const prevImg = () => {
-    setCurrentImg(currentImg === 0 ? productImg.length - 1 : currentImg - 1);
+    setCurrentImg(currentImg === 0 ? dynamicImages.length - 1 : currentImg - 1);
   };
 
   const nextImg = () => {
-    setCurrentImg(currentImg === productImg.length - 1 ? 0 : currentImg + 1);
+    setCurrentImg(currentImg === dynamicImages.length - 1 ? 0 : currentImg + 1);
   };
 
   // Product Quantity
@@ -61,14 +83,6 @@ const Product = () => {
   // Product WishList
 
   const wishlistItems = useSelector((state) => state.wishlist.items);
-  const productDetails = {
-    id: 14,
-    productID: 14,
-    productName: "Lightweight Puffer Jacket",
-    productPrice: 90,
-    frontImg: productImg[0],
-    productReviews: "8k+ reviews",
-  };
 
   const isInWishlist = wishlistItems.some(item => item.id === productDetails.id);
 
@@ -166,13 +180,12 @@ const Product = () => {
         <div className="productShowCase">
           <div className="productGallery">
             <div className="productThumb">
-              <img src={product1} onClick={() => setCurrentImg(0)} alt="" />
-              <img src={product2} onClick={() => setCurrentImg(1)} alt="" />
-              <img src={product3} onClick={() => setCurrentImg(2)} alt="" />
-              <img src={product4} onClick={() => setCurrentImg(3)} alt="" />
+              {dynamicImages.map((imgSrc, idx) => (
+                <img key={idx} src={imgSrc} onClick={() => setCurrentImg(idx)} alt="" />
+              ))}
             </div>
             <div className="productFullImg">
-              <img src={productImg[currentImg]} alt="" />
+              <img src={dynamicImages[currentImg]} alt="" />
               <div className="buttonsGroup">
                 <button onClick={prevImg} className="directionBtn">
                   <GoChevronLeft size={18} />
@@ -190,18 +203,28 @@ const Product = () => {
                 <Link to="/shop">The Shop</Link>
               </div>
               <div className="prevNextLink">
-                <Link to="/product">
+                <Link to={`/product/${Math.max(1, productDetails.productID - 1)}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(`/product/${Math.max(1, productDetails.productID - 1)}`);
+                  }}
+                >
                   <GoChevronLeft />
                   <p>Prev</p>
                 </Link>
-                <Link to="/product">
+                <Link to={`/product/${productDetails.productID + 1}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(`/product/${productDetails.productID + 1}`);
+                  }}
+                >
                   <p>Next</p>
                   <GoChevronRight />
                 </Link>
               </div>
             </div>
             <div className="productName">
-              <h1>Lightweight Puffer Jacket With a Hood</h1>
+              <h1>{productDetails.productName}</h1>
             </div>
             <div className="productRating">
               <FaStar color="#FEC78A" size={10} />
@@ -209,10 +232,10 @@ const Product = () => {
               <FaStar color="#FEC78A" size={10} />
               <FaStar color="#FEC78A" size={10} />
               <FaStar color="#FEC78A" size={10} />
-              <p>8k+ reviews</p>
+              <p>{productDetails.productReviews}</p>
             </div>
             <div className="productPrice">
-              <h3>$90</h3>
+              <h3>${productDetails.productPrice}</h3>
             </div>
             <div className="productDescription">
               <p>

@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Filter.css";
 import { FiSearch } from "react-icons/fi";
 
-const Filter = () => {
-  const [selectedColors, setSelectedColors] = useState([]);
-  const [selectedSizes, setSelectedSizes] = useState([]);
-  const [selectedBrands, setSelectedBrands] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
+const Filter = ({
+  selectedCategory,
+  selectedColors,
+  selectedSize,
+  selectedBrands,
+  onCategorySelect,
+  onColorToggle,
+  onSizeSelect,
+  onBrandToggle,
+}) => {
+  const [localSearchTerm, setLocalSearchTerm] = useState("");
+  const [priceRange] = useState({ min: 0, max: 1000 });
 
   const colors = [
     { name: "Black", value: "#000000" },
@@ -49,40 +55,22 @@ const Filter = () => {
     "Watches",
   ];
 
-  const handleColorClick = (color) => {
-    setSelectedColors((prev) =>
-      prev.includes(color)
-        ? prev.filter((c) => c !== color)
-        : [...prev, color]
-    );
-  };
-
-  const handleSizeClick = (size) => {
-    setSelectedSizes((prev) =>
-      prev.includes(size)
-        ? prev.filter((s) => s !== size)
-        : [...prev, size]
-    );
-  };
-
-  const handleBrandChange = (brand) => {
-    setSelectedBrands((prev) =>
-      prev.includes(brand)
-        ? prev.filter((b) => b !== brand)
-        : [...prev, brand]
-    );
-  };
-
   const clearAllFilters = () => {
-    setSelectedColors([]);
-    setSelectedSizes([]);
-    setSelectedBrands([]);
-    setSearchTerm("");
-    setPriceRange({ min: 0, max: 1000 });
+    onCategorySelect("All Products");
+    if (selectedColors?.length) {
+      selectedColors.forEach((c) => onColorToggle(c));
+    }
+    if (selectedSize) {
+      onSizeSelect(null);
+    }
+    if (selectedBrands?.length) {
+      selectedBrands.forEach((b) => onBrandToggle(b));
+    }
+    setLocalSearchTerm("");
   };
 
   const filteredBrands = brands.filter((brand) =>
-    brand.name.toLowerCase().includes(searchTerm.toLowerCase())
+    brand.name.toLowerCase().includes(localSearchTerm.toLowerCase())
   );
 
   return (
@@ -97,7 +85,16 @@ const Filter = () => {
       <div className="filterCategories">
         <h3 className="filterHeading">Categories</h3>
         {categories.map((category, index) => (
-          <p key={index}>{category}</p>
+          <p
+            key={index}
+            onClick={() => onCategorySelect(category)}
+            style={{
+              fontWeight: selectedCategory === category ? 700 : 400,
+              color: selectedCategory === category ? "#2e7d32" : "",
+            }}
+          >
+            {category}
+          </p>
         ))}
       </div>
 
@@ -108,9 +105,9 @@ const Filter = () => {
           {colors.map((color, index) => (
             <button
               key={index}
-              className={selectedColors.includes(color) ? "selected" : ""}
+              className={selectedColors?.includes(color.name) ? "selected" : ""}
               style={{ backgroundColor: color.value }}
-              onClick={() => handleColorClick(color)}
+              onClick={() => onColorToggle(color.name)}
               title={color.name}
             />
           ))}
@@ -125,9 +122,9 @@ const Filter = () => {
             <button
               key={index}
               className={`sizeButton ${
-                selectedSizes.includes(size) ? "selected" : ""
+                selectedSize === size ? "selected" : ""
               }`}
-              onClick={() => handleSizeClick(size)}
+              onClick={() => onSizeSelect(selectedSize === size ? null : size)}
             >
               {size}
             </button>
@@ -142,8 +139,8 @@ const Filter = () => {
           <input
             type="text"
             placeholder="Search brands..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            value={localSearchTerm}
+            onChange={(e) => setLocalSearchTerm(e.target.value)}
           />
           <FiSearch className="searchIcon" />
         </div>
@@ -155,8 +152,8 @@ const Filter = () => {
                   type="checkbox"
                   id={`brand-${index}`}
                   className="brandRadio"
-                  checked={selectedBrands.includes(brand.name)}
-                  onChange={() => handleBrandChange(brand.name)}
+                  checked={selectedBrands?.includes(brand.name)}
+                  onChange={() => onBrandToggle(brand.name)}
                 />
                 <label htmlFor={`brand-${index}`} className="brandLabel">
                   {brand.name}

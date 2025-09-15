@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import "./ShopDetails.css";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +20,11 @@ const ShopDetails = () => {
   const wishlistItems = useSelector((state) => state.wishlist.items);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All Products");
+  const [selectedColors, setSelectedColors] = useState([]);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedBrands, setSelectedBrands] = useState([]);
+  const [sortBy, setSortBy] = useState("default");
 
   const handleWishlistClick = (product) => {
     const isInWishlist = wishlistItems.some(item => item.productID === product.productID);
@@ -110,12 +115,87 @@ const ShopDetails = () => {
     }
   };
 
+  const onCategorySelect = (category) => setSelectedCategory(category);
+  const onColorToggle = (colorName) => {
+    setSelectedColors((prev) =>
+      prev.includes(colorName) ? prev.filter((c) => c !== colorName) : [...prev, colorName]
+    );
+  };
+  const onSizeSelect = (size) => {
+    setSelectedSize(size);
+  };
+  const onBrandToggle = (brand) => {
+    setSelectedBrands((prev) => (prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]));
+  };
+
+  const filteredAndSortedProducts = useMemo(() => {
+    let products = [...StoreData];
+
+    // Category
+    if (selectedCategory && selectedCategory !== "All Products") {
+      products = products.filter((p) => p.category === selectedCategory);
+    }
+
+    // Colors
+    if (selectedColors.length > 0) {
+      products = products.filter((p) => {
+        if (!Array.isArray(p.colors)) return false;
+        return selectedColors.some((c) => p.colors.includes(c));
+      });
+    }
+
+    // Sizes
+    if (selectedSize) {
+      products = products.filter((p) => Array.isArray(p.sizes) && p.sizes.includes(selectedSize));
+    }
+
+    // Brands
+    if (selectedBrands.length > 0) {
+      products = products.filter((p) => selectedBrands.includes(p.brand));
+    }
+
+    // Sorting
+    switch (sortBy) {
+      case "a-z":
+        products.sort((a, b) => a.productName.localeCompare(b.productName));
+        break;
+      case "z-a":
+        products.sort((a, b) => b.productName.localeCompare(a.productName));
+        break;
+      case "lowToHigh":
+        products.sort((a, b) => a.productPrice - b.productPrice);
+        break;
+      case "highToLow":
+        products.sort((a, b) => b.productPrice - a.productPrice);
+        break;
+      case "oldToNew":
+        products.sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded));
+        break;
+      case "newToOld":
+        products.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+        break;
+      default:
+        break;
+    }
+
+    return products;
+  }, [selectedCategory, selectedColors, selectedSize, selectedBrands, sortBy]);
+
   return (
     <>
       <div className="shopDetails">
         <div className="shopDetailMain">
           <div className="shopDetails__left">
-            <Filter />
+            <Filter
+              selectedCategory={selectedCategory}
+              selectedColors={selectedColors}
+              selectedSize={selectedSize}
+              selectedBrands={selectedBrands}
+              onCategorySelect={onCategorySelect}
+              onColorToggle={onColorToggle}
+              onSizeSelect={onSizeSelect}
+              onBrandToggle={onBrandToggle}
+            />
           </div>
           <div className="shopDetails__right">
             <div className="shopDetailsSorting">
@@ -131,7 +211,7 @@ const ShopDetails = () => {
                 <p>Filter</p>
               </div>
               <div className="shopDetailsSort">
-                <select name="sort" id="sort">
+                <select name="sort" id="sort" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
                   <option value="default">Default Sorting</option>
                   <option value="Featured">Featured</option>
                   <option value="bestSelling">Best Selling</option>
@@ -150,11 +230,14 @@ const ShopDetails = () => {
               </div>
             </div>
             <div className="shopDetailsProducts">
+              {filteredAndSortedProducts.length === 0 ? (
+                <div className="noProducts">No products found</div>
+              ) : (
               <div className="shopDetailsProductsContainer">
-                {StoreData.slice(0, 6).map((product) => (
-                  <div className="sdProductContainer">
+                {filteredAndSortedProducts.map((product) => (
+                  <div className="sdProductContainer" key={product.productID}>
                     <div className="sdProductImages">
-                      <Link to="/Product" onClick={scrollToTop}>
+                      <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                         <img
                           src={product.frontImg}
                           alt=""
@@ -190,7 +273,7 @@ const ShopDetails = () => {
                         />
                       </div>
                       <div className="sdProductNameInfo">
-                        <Link to="/product" onClick={scrollToTop}>
+                        <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                           <h5>{product.productName}</h5>
                         </Link>
 
@@ -210,6 +293,7 @@ const ShopDetails = () => {
                   </div>
                 ))}
               </div>
+              )}
             </div>
             <div className="shopDetailsPagination">
               <div className="sdPaginationPrev">
@@ -243,7 +327,16 @@ const ShopDetails = () => {
           <IoClose onClick={closeDrawer} className="closeButton" size={26} />
         </div>
         <div className="drawerContent">
-          <Filter />
+          <Filter
+            selectedCategory={selectedCategory}
+            selectedColors={selectedColors}
+            selectedSize={selectedSize}
+            selectedBrands={selectedBrands}
+            onCategorySelect={onCategorySelect}
+            onColorToggle={onColorToggle}
+            onSizeSelect={onSizeSelect}
+            onBrandToggle={onBrandToggle}
+          />
         </div>
       </div>
     </>
