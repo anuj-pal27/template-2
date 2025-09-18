@@ -18,6 +18,13 @@
   background-color: #eff0f1;
 }
 
+/* Keep background image visible in dark mode but adjust overlay */
+.dark .collectionLeft {
+  background-image: url("../../../Assets/Collection/collection1.jpg");
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: overlay;
+}
+
 .col-link {
   display: flex;
 }
@@ -32,8 +39,8 @@
   left: 0;
   bottom: -5px;
   width: 50%;
-  border-bottom: 2px solid black;
-  transition: width 0.2s ease;
+  border-bottom: 2px solid var(--text-primary);
+  transition: width 0.2s ease, border-color 0.3s ease;
 }
 
 .col-link a:hover::after {
@@ -57,6 +64,13 @@
   background-color: #eff0f1;
 }
 
+/* Keep background image visible in dark mode but adjust overlay */
+.dark .collectionTop {
+  background-image: url("../../../Assets/Collection/collection2.jpg");
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: overlay;
+}
+
 .collectionBottom {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -74,6 +88,13 @@
   background-color: #eff0f1;
 }
 
+/* Keep background image visible in dark mode but adjust overlay */
+.dark .box1 {
+  background-image: url("../../../Assets/Collection/collection3.jpg");
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: overlay;
+}
+
 .box2 {
   background-color: #f4e5e0;
   display: flex;
@@ -82,17 +103,26 @@
   padding: 30px;
 }
 
+/* Keep background color in dark mode but make it darker */
+.dark .box2 {
+  background-color: rgba(244, 229, 224, 0.8);
+}
+
 /* text in box style */
 
 .col-p {
   text-transform: uppercase;
   font-size: 15px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .col-h3 {
   text-transform: uppercase;
   font-size: 26px;
   font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .col-h3 span {
@@ -103,11 +133,14 @@
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .collection a {
   text-decoration: none;
-  color: black;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 @media screen and (max-width: 1210px) {

@@ -235,7 +235,7 @@ const ShopDetails = () => {
               ) : (
               <div className="shopDetailsProductsContainer">
                 {filteredAndSortedProducts.map((product) => (
-                  <div className="sdProductContainer" key={product.productID}>
+                  <div className={`sdProductContainer ${!product.backImg ? 'no-back-image' : ''}`} key={product.productID}>
                     <div className="sdProductImages">
                       <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                         <img
@@ -243,11 +243,13 @@ const ShopDetails = () => {
                           alt=""
                           className="sdProduct_front"
                         />
-                        <img
-                          src={product.backImg}
-                          alt=""
-                          className="sdProduct_back"
-                        />
+                        {product.backImg && (
+                          <img
+                            src={product.backImg}
+                            alt=""
+                            className="sdProduct_back"
+                          />
+                        )}
                       </Link>
                       <h4 onClick={() => handleAddToCart(product)}>
                         Add to Cart

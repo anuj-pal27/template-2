@@ -2,11 +2,18 @@
   background-color: var(--bg-secondary);
   background-image: url("../../../Assets/slideshow-pattern.png");
   background-size: cover;
+  background-blend-mode: multiply;
   padding: 0 160px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: background-color 0.3s ease;
+}
+
+/* Remove background pattern in dark mode */
+.dark .heroMain {
+  background-image: none;
+  background-color: var(--bg-primary);
 }
 
 .sectionleft {

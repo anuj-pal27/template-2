@@ -264,26 +264,6 @@ const Navbar = () => {
                 <p>My Account</p>
               </Link>
             </div>
-            <div className="mobile-menuFooterLangCurrency">
-              <div className="mobile-menuFooterLang">
-                <p>Language</p>
-                <select name="language" id="language">
-                  <option value="english">United States | English</option>
-                  <option value="Hindi">Hindi</option>
-                  <option value="Germany">Germany</option>
-                  <option value="French">French</option>
-                </select>
-              </div>
-              <div className="mobile-menuFooterCurrency">
-                <p>Currency</p>
-                <select name="currency" id="currency">
-                  <option value="USD">$ USD</option>
-                  <option value="INR">₹ INR</option>
-                  <option value="EUR">€ EUR</option>
-                  <option value="GBP">£ GBP</option>
-                </select>
-              </div>
-            </div>
             <div className="mobile-menuSocial_links">
               <FaFacebookF />
               <FaXTwitter />

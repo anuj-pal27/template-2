@@ -19,6 +19,13 @@
   gap: 10px;
 }
 
+/* Keep background image visible in dark mode but adjust overlay */
+.dark .bannerLeft {
+  background-image: url("../../../Assets/Banner/banner_1.jpg");
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: overlay;
+}
+
 .bannerRight {
   background-image: url("../../../Assets/Banner/banner_2.jpg");
   background-position: center;
@@ -30,6 +37,13 @@
   gap: 10px;
 }
 
+/* Keep background image visible in dark mode but adjust overlay */
+.dark .bannerRight {
+  background-image: url("../../../Assets/Banner/banner_2.jpg");
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: overlay;
+}
+
 /* text style */
 
 .bannerh6 {
@@ -37,24 +51,39 @@
   text-transform: uppercase;
   font-weight: 600;
   font-size: 17px;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode text color adjustment */
+.dark .bannerh6 {
+  color: var(--text-primary);
 }
 
 .bannerh3 {
   color: var(--color, white);
   font-size: 27px;
   font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode text color adjustment */
+.dark .bannerh3 {
+  color: var(--text-primary);
 }
 
 .bannerh5 {
   font-size: 15px;
   text-transform: uppercase;
   font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .bannerh5 a {
   text-decoration: none;
-  color: none;
+  color: var(--text-primary);
   position: relative;
+  transition: color 0.3s ease;
 }
 
 .bannerh5 a::after {
@@ -64,7 +93,12 @@
   bottom: -5px;
   width: 50%;
   border-bottom: 2px solid rgb(255, 255, 255);
-  transition: width 0.2s ease;
+  transition: width 0.2s ease, border-color 0.3s ease;
+}
+
+/* Dark mode link underline color adjustment */
+.dark .bannerh5 a::after {
+  border-bottom-color: var(--text-primary);
 }
 
 .bannerh5 a:hover::after {

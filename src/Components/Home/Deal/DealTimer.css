@@ -14,10 +14,11 @@
   transition: background-color 0.3s ease;
 }
 
-/* Dark mode styles for Spring Collection */
+/* Dark mode styles for Spring Collection - better contrast */
 .dark .dealTimer {
-  background-color: #1a2e1a;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../../../Assets/Deal/dealbg.jpg);
+  background-color: rgba(0, 0, 0, 0.7);
+  background-image: url(../../../Assets/Deal/dealbg.jpg);
+  background-blend-mode: multiply;
 }
 
 .dealTimerMainContent {
@@ -39,6 +40,13 @@
   color: #2e7d32;
   text-transform: uppercase;
   font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode text color adjustment - make it more visible */
+.dark .dealTimeContent p {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .dealTimeContent p::before {
@@ -51,6 +59,12 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+  transition: background-color 0.3s ease;
+}
+
+/* Dark mode line color adjustment - make it more visible */
+.dark .dealTimeContent p::before {
+  background-color: #ffffff;
 }
 
 .dealTimeContent h3 {
@@ -85,7 +99,12 @@
   bottom: -5px;
   width: 50%;
   border-bottom: 2px solid #2e7d32;
-  transition: width 0.2s ease;
+  transition: width 0.2s ease, border-color 0.3s ease;
+}
+
+/* Dark mode link underline color adjustment - make it more visible */
+.dark .dealTimeLink a::after {
+  border-bottom-color: #ffffff;
 }
 
 .dealTimeLink a:hover::after {

@@ -141,8 +141,9 @@
   top: 320px;
   text-align: center;
   padding: 10px;
-  background-color: rgb(253, 253, 253);
-  transition: all 0.2s cubic-bezier(0.99, 0.99, 0, 0.61);
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  transition: all 0.2s cubic-bezier(0.99, 0.99, 0, 0.61), background-color 0.3s ease, color 0.3s ease;
   margin: 0 10px;
   text-transform: uppercase;
   font-weight: 500;
@@ -169,8 +170,9 @@
 }
 
 .trendyProductCategoryWishlist p {
-  color: #767676;
+  color: var(--text-secondary);
   font-size: 14px;
+  transition: color 0.3s ease;
 }
 
 .trendyProductNameInfo {
@@ -238,6 +240,8 @@
 
 .trendyProductImagesCart {
   display: none;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 @media screen and (max-width: 1210px) {
@@ -268,7 +272,8 @@
     border-radius: 50%;
     padding: 5px;
     z-index: 8;
-    color: gray;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
   }
 }
 

@@ -116,7 +116,7 @@ const Wishlist = () => {
               {wishlistItems.map((product) => (
                 <div key={product.id} className="wishlist-item">
                   <div className="wishlist-item-image">
-                    <Link to="/product" onClick={scrollToTop}>
+                    <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                       <img src={product.frontImg} alt={product.productName} />
                     </Link>
                     <div className="wishlist-item-actions">
@@ -132,7 +132,7 @@ const Wishlist = () => {
                   
                   <div className="wishlist-item-info">
                     <div className="wishlist-item-header">
-                      <Link to="/product" onClick={scrollToTop}>
+                      <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                         <h3>{product.productName}</h3>
                       </Link>
                       <button 

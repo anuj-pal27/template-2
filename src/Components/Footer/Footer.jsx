@@ -37,7 +37,7 @@ const Footer = () => {
             <p>1418 River Drive, Suite 35 Cottonhall, CA 9622 United States</p>
 
             <div className="footer_address">
-              <strong> hello@novawear.com </strong>
+              <strong> hello@leafloom.com </strong>
               <strong> +1 246-345-0695 </strong>
             </div>
 
@@ -142,26 +142,6 @@ const Footer = () => {
         </div>
         <div className="footer_bottom">
           <p></p>
-          <div className="footerLangCurrency">
-            <div className="footerLang">
-              <p>Language</p>
-              <select name="language" id="language">
-                <option value="english">United States | English</option>
-                <option value="Hindi">Hindi</option>
-                <option value="Germany">Germany</option>
-                <option value="French">French</option>
-              </select>
-            </div>
-            <div className="footerCurrency">
-              <p>Currency</p>
-              <select name="currency" id="currency">
-                <option value="USD">$ USD</option>
-                <option value="INR">₹ INR</option>
-                <option value="EUR">€ EUR</option>
-                <option value="GBP">£ GBP</option>
-              </select>
-            </div>
-          </div>
         </div>
       </footer>
     </>

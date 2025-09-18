@@ -22,13 +22,13 @@ const ContactPage = () => {
         <h2>Contact Us</h2>
         <div className="contactMap">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31516.608232214024!2d72.816!3d19.076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c630b0!2sNovaWear%20Store!5e0!3m2!1sen!2sin!4v1708798894132!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31516.608232214024!2d72.816!3d19.076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c630b0!2sLeafLoom%20Store!5e0!3m2!1sen!2sin!4v1708798894132!5m2!1sen!2sin"
             width="800"
             height="600"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="novawear-map"
+            title="leafloom-map"
           ></iframe>
         </div>
         <div className="contactInfo">

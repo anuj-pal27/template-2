@@ -22,7 +22,7 @@ const AboutPage = () => {
   return (
     <>
       <div className="aboutSection">
-        <h2>About NovaWear</h2>
+        <h2>About LeafLoom</h2>
         <img src={about1} alt="" />
         <div className="aboutContent">
           <h3>Our Story</h3>

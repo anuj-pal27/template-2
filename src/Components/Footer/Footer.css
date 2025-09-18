@@ -187,41 +187,6 @@
   transition: border-color 0.3s ease;
 }
 
-.footerLangCurrency {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.footerLang {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.footerLang select {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  font-size: 14px;
-  color: var(--text-primary);
-  transition: color 0.3s ease;
-}
-
-.footerCurrency {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.footerCurrency select {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  font-size: 14px;
-  color: var(--text-primary);
-  transition: color 0.3s ease;
-}
 
 @media screen and (max-width: 1210px) {
   .footer {

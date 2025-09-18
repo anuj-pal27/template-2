@@ -4,8 +4,15 @@
   background-color: var(--bg-secondary);
   background-image: url("../../../Assets/slideshow-pattern.png");
   background-size: cover;
+  background-blend-mode: multiply;
   min-height: 100vh;
   transition: background-color 0.3s ease;
+}
+
+/* Remove background pattern in dark mode */
+.dark .shopDetails {
+  background-image: none;
+  background-color: var(--bg-primary);
 }
 
 .shopDetailMain {
@@ -163,6 +170,11 @@
 
 .sdProductContainer:hover .sdProduct_front {
   opacity: 0;
+}
+
+/* Keep front image visible when there's no back image */
+.sdProductContainer.no-back-image:hover .sdProduct_front {
+  opacity: 1;
 }
 
 .sdProductContainer h4 {
