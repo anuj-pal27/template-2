@@ -5,6 +5,15 @@
   transition: background-color 0.3s ease;
 }
 
+/* Reset all link styles in search results */
+.search-results a {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
 .search-results-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -180,10 +189,54 @@
   transition: color 0.3s ease;
 }
 
-.search-product-name-info h5 a {
-  text-decoration: none;
+/* Remove all underlines from product name links */
+.search-product-name-info h5 a,
+.search-product-name-info h5 a:link,
+.search-product-name-info h5 a:visited,
+.search-product-name-info h5 a:hover,
+.search-product-name-info h5 a:active,
+.search-product-name-info h5 a:focus {
+  text-decoration: none !important;
   color: inherit;
   transition: color 0.3s ease;
+  border-bottom: none !important;
+  outline: none;
+}
+
+/* Ensure no underlines on any link in search results */
+.search-results a,
+.search-results a:link,
+.search-results a:visited,
+.search-results a:hover,
+.search-results a:active,
+.search-results a:focus {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/* Additional comprehensive rules to remove underlines */
+.search-product-card a,
+.search-product-card a:link,
+.search-product-card a:visited,
+.search-product-card a:hover,
+.search-product-card a:active,
+.search-product-card a:focus {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  outline: none;
+}
+
+/* Target the specific h5 element inside links */
+.search-product-name-info h5 a,
+.search-product-name-info h5 a:link,
+.search-product-name-info h5 a:visited,
+.search-product-name-info h5 a:hover,
+.search-product-name-info h5 a:active,
+.search-product-name-info h5 a:focus {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  outline: none;
+  box-shadow: none !important;
 }
 
 .search-product-name-info h5 a:hover {
@@ -291,4 +344,31 @@
   .no-results h2 {
     font-size: 20px;
   }
+}
+
+/* CRITICAL: Force remove all underlines from search result links */
+.search-results * a,
+.search-results * a:link,
+.search-results * a:visited,
+.search-results * a:hover,
+.search-results * a:active,
+.search-results * a:focus {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Specific targeting for product name links */
+.search-product-name-info h5 a,
+.search-product-name-info h5 a:link,
+.search-product-name-info h5 a:visited,
+.search-product-name-info h5 a:hover,
+.search-product-name-info h5 a:active,
+.search-product-name-info h5 a:focus {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: none !important;
 }

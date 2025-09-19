@@ -130,7 +130,7 @@ const SearchResults = () => {
             {filteredProducts.map((product) => (
               <div key={product.productID} className="search-product-card">
                 <div className="search-product-images">
-                  <Link to="/Product" onClick={scrollToTop}>
+                  <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                     <img
                       src={product.frontImg}
                       alt={product.productName}
@@ -168,9 +168,9 @@ const SearchResults = () => {
                     />
                   </div>
                   <div className="search-product-name-info">
-                    <Link to="/product" onClick={scrollToTop}>
-                      <h5>{product.productName}</h5>
-                    </Link>
+                  <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
+                    <h5>{product.productName}</h5>
+                  </Link>
                     <p>${product.productPrice}</p>
                     <div className="search-product-rating-reviews">
                       <div className="search-product-rating-star">
